@@ -1,5 +1,10 @@
 <div class="row m-0">
   <div *ngFor="let item of itemList$ | async">
-    <app-item [item]="item"></app-item>
+    <app-item [item]="item" [view]="'home'"></app-item>
   </div>
 </div>
+<footer class="navbar navbar-expand navbar-light bg-white d-flex flex-row shadow-sm fixed-bottom">
+  <div class="ml-auto">
+    <a routerLink="/cart" class="btn btn-success">Confirm Your Items</a>
+  </div>
+</footer>

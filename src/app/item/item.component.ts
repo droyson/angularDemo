@@ -10,6 +10,7 @@ import { HomeService } from '../home/home.service';
 export class ItemComponent implements OnInit {
 
   @Input() item: Item;
+  @Input() view: string;
 
   constructor(private homeService: HomeService) { }
 

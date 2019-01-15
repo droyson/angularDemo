@@ -10,9 +10,10 @@
         <p class="card-text">Dimensions : {{item.dimension}}</p>
       </div>
       <div class="col-3 d-flex align-items-center">
-        <button class="btn btn-outline-success" (click)="decrement()" [disabled]="item.selectedQuantity == 0">-</button>
+        <button class="btn btn-outline-success" (click)="decrement()" [disabled]="item.selectedQuantity == 0" *ngIf="view == 'home'">-</button>
+        <span class="p-2" *ngIf="view == 'cart'">Selected Quantity</span>
         <span class="p-2">{{item.selectedQuantity}}</span>
-        <button class="btn btn-outline-success" (click)="increment()" [disabled]="item.quantity == 0">+</button>
+        <button class="btn btn-outline-success" (click)="increment()" [disabled]="item.quantity == 0" *ngIf="view == 'home'">+</button>
       </div>
     </div>
   </div>
