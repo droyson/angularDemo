@@ -1,9 +1,16 @@
-<header class="navbar navbar-expand navbar-light bg-white d-flex flex-row">
+<header class="navbar navbar-expand navbar-light bg-white d-flex flex-row shadow-sm sticky-top">
   <div>
     <a class="navbar-brand" routerLink="/">{{appTitle}}</a>
   </div>
   <div class="ml-auto">
-    <a class="p-2" routerLink="/cart">Cart <i class="fas fa-shopping-cart"></i></a>
-    <a class="p-2" routerLink="/login">Sign in <i class="fas fa-sign-in-alt"></i></a>
+    <a class="p-2" routerLink="/cart">
+      <span *ngIf="itemsInCart == 0">Cart</span>
+      <span *ngIf="itemsInCart != 0">{{itemsInCart}} Items</span>
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+    <a class="p-2" routerLink="/login">
+      <span *ngIf="loggedInUser == null"> Sign in <i class="fas fa-sign-in-alt"></i></span>
+      <span *ngIf="loggedInUser != null"> {{loggedInUser.username}} <i class="fas fa-user"></i></span>
+    </a>
   </div>
 </header>

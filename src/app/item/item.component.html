@@ -1,0 +1,19 @@
+<div class="mt-1 d-flex justify-content-center">
+  <div class="card col-sm-9 shadow">
+    <div class="card-body row m-0">
+      <div class="col-3 p-0">
+        <img [src]="item.imageUrl" [alt]="item.name" class="img-fluid">
+      </div>
+      <div class="col-6 d-flex flex-column">
+        <h5 class="card-title">{{item.name}}</h5>
+        <h6 class="card-subtitle">Price : {{item.price}}</h6>
+        <p class="card-text">Dimensions : {{item.dimension}}</p>
+      </div>
+      <div class="col-3 d-flex align-items-center">
+        <button class="btn btn-outline-success" (click)="decrement()" [disabled]="item.selectedQuantity == 0">-</button>
+        <span class="p-2">{{item.selectedQuantity}}</span>
+        <button class="btn btn-outline-success" (click)="increment()" [disabled]="item.quantity == 0">+</button>
+      </div>
+    </div>
+  </div>
+</div>

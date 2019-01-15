@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loggedInUser: User;
   loginSubscription: Subscription;
 
-  constructor(@Inject(LoginService) private service: LoginService) {
+  constructor(private service: LoginService) {
     this.errorMessage = '';
     this.user = new User();
   }
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     if (this.user.username.trim() && this.user.password.trim()) {
-      let loginSuccess = this.service.login(this.user.username, this.user.password);
+      let loginSuccess = this.service.login(this.user);
       this.errorMessage = loginSuccess ? '' : 'Incorrect Password';
     } else {
       this.errorMessage = 'User Name and Password fields cannot be empty';
