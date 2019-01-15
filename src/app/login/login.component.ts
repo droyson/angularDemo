@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { LoginService } from "./login.service";
 import { User } from './User';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   loggedInUser: User;
   loginSubscription: Subscription;
 
-  constructor(private service: LoginService) {
+  constructor(private service: LoginService, private router: Router) {
     this.errorMessage = '';
     this.user = new User();
   }
@@ -30,6 +31,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.user.username.trim() && this.user.password.trim()) {
       let loginSuccess = this.service.login(this.user);
       this.errorMessage = loginSuccess ? '' : 'Incorrect Password';
+
+      if (loginSuccess) {
+        let url = this.service.redirectUrl || '/home';
+        this.service.redirectUrl = '';
+        this.router.navigate([url]);
+      }
     } else {
       this.errorMessage = 'User Name and Password fields cannot be empty';
     }
@@ -37,6 +44,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   logout() {
     this.service.logout();
+    let url = this.service.redirectUrl || '/home';
+    this.service.redirectUrl = '';
+    this.router.navigate([url]);
   }
 
   ngOnDestroy() {

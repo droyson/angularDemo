@@ -10,7 +10,10 @@ export class LoginService {
   private _users: User[];
   private loggedUserSubject = new BehaviorSubject<User>(null);
 
+  redirectUrl: string;
+
   constructor() {
+    this.redirectUrl = '';
     this._users = defaultUsers;
     this.loggedInUser = JSON.parse(localStorage.getItem('user'));
   }
