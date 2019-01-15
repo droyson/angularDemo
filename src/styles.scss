@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+
+body{
+    background-color: $gray-100;
+
+    header{
+        text-transform: uppercase;
+    }
+}

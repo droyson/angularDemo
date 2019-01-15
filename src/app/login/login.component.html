@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center">
+  <div class="card col-sm-6">
+    <div class="card-body">
+      <form (ngSubmit)="login()" #loginForm="ngForm" *ngIf="loggedInUser == null">
+        <div class="form-group">
+          <label for="username">User Name</label>
+          <input class="form-control" type="text" id="username" [(ngModel)]="user.username" name="name" />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input class="form-control" type="password" id="password" [(ngModel)]="user.password" name="password" />
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Sign In / Sign Up</button>
+        </div>
+        <br />
+        <div class="form-group alert alert-danger" *ngIf="errorMessage">
+          {{errorMessage}}
+        </div>
+      </form>
+      <div class="text-center" *ngIf="loggedInUser != null">
+        <div class="container">
+          Hi {{loggedInUser.username}},
+          Do you wish to logout?
+        </div>
+        <button (click)="logout()" class="btn btn-danger">Logout <i class="fas fa-sign-out-alt"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
